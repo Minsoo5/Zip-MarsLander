@@ -87,10 +87,32 @@ public class Vehicle {
 
     public DescentEvent getStatus(int tick) {
         // create and return a new DescentEvent object
+        int reportNum = -100;
 
+        if (this.Altitude < 1) {
+        String report = checkFinalStatus();
 
-        DescentEvent de = new DescentEvent(tick, this.Velocity, this.Fuel, this.Altitude, Flying);
+        switch (report) {
+            case ("dead"):
+                reportNum = -3;
+                break;
+            case ("crashed"):
+                reportNum = -2;
+                break;
+            case ("success"):
+                reportNum = 0;
+                break;
+            case ("emptyfuel"):
+                reportNum = -1;
+                break;
+        }
+
+        } else reportNum = 1;
+
+        DescentEvent de = new DescentEvent(tick, this.Velocity, this.Fuel, this.Altitude, reportNum);
         // filled in with the state of the vehicle.
+        //Need the current status of the vehicle
+
 
         return de;
     }
