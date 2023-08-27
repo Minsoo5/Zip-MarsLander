@@ -8,7 +8,7 @@ public class OnBoardComputer implements BurnStream {
         //a = (speed * speed)/(2 * altitude)
         int burn = (int) ((currentSpeed * currentSpeed) / (2 * currentAltitude));
 
-        if (currentAltitude == 0 && currentSpeed < 1) {
+        if (currentAltitude == 0 && currentAltitude < 2) {
             burn = -1;
         }
 
